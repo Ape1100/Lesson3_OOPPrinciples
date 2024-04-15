@@ -1,0 +1,10 @@
+
+
+    def display_category_summary(self):
+        print("Category:", self.__category_name)
+        print("Allocated Budget: $", self.__allocated_budget)
+        print("Remaining Budget: $", self.__remaining_budget)
+
+# Example usage
+food_category = BudgetCategory("Food", 500)
+food_category.add_expense(100)

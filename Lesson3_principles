@@ -1,0 +1,49 @@
+#Lesson3 Assignemnts OOP Principles
+#Encapsulation in Personal Budget Management 
+
+class BudgetCategory:       
+    def __init__(self, category_name, allocated_budget):
+        self.__category_name = category_name
+        self.__allocated_budget = allocated_budget
+        self.__remaining_budget = allocated_budget
+
+    def get_category_name(self):
+        return self.__category_name
+    
+    def set_category_name(self, new_name):
+        if isinstance(new_name, str):
+            self.__category_name = new_name
+        else:
+            print("Invalid category name. Please provide a string.")
+
+            #display budget 
+
+    def get_allocated_budget(self): 
+        return self.__allocated_budget
+    
+    def set_allocated_budget(self, new_budget):
+        if isinstance(new_budget, (int, float)) and new_budget >= 0:
+            self.__allocated_budget = new_budget
+        else:
+            print("Invalid budget. Please provide a positive number.")
+
+    def add_expense(self, amount):
+        if isinstance(amount, (int, float)) and amount >= 0:
+            if amount <= self.__remaining_budget:
+                self.__remaining_budget -= amount
+                print(f"Expense of ${amount} deducted from {self.__category_name} budget.")
+            else:
+                print("Insufficient budget.")
+        else:
+            print("Invalid expense amount. Please provide a positive number.")
+
+    def display_category_summary(self):
+        print("Category:", self.__category_name)
+        print("Allocated Budget: $", self.__allocated_budget)
+        print("Remaining Budget: $", self.__remaining_budget)
+
+# Example usage
+food_category = BudgetCategory("Food", 500)
+food_category.add_expense(100)
+food_category.display_category_summary()
+
